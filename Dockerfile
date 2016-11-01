@@ -8,4 +8,3 @@ RUN        /usr/bin/systemctl unmask --no-reload systemd-logind.service getty.ta
            /usr/sbin/useradd user ;\
            echo -e "root:\nuser:" | /usr/sbin/chpasswd -e ;\
            dnf -y makecache
-
