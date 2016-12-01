@@ -1,4 +1,4 @@
-FROM       fedora:24
+FROM       fedora:25
 ENV        container docker
 STOPSIGNAL SIGRTMIN+3
 LABEL      name="Fedora Base Image"
