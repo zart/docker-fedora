@@ -2,7 +2,7 @@
 # minimal fedora 36 image with no extras
 
 # fedora own registry
-FROM       registry.fedoraproject.org:36
+FROM       registry.fedoraproject.org/fedora:36 as base
 
 # my minimal core
 RUN        echo install_weak_deps=False >> /etc/dnf/dnf.conf && \
@@ -15,5 +15,11 @@ RUN        echo install_weak_deps=False >> /etc/dnf/dnf.conf && \
 # minimize layers
 FROM       scratch as fedora
 COPY       --from=base / /
-LABEL      name="Fedora Base Image"
+ENV        DISTTAG=36container \
+           FGC=f36 \
+           container=oci
+LABEL      vendor="Fedora Project" \
+           name="fedora" \
+           version="36" \
+           license="MIT"
 CMD        ["/bin/bash"]
